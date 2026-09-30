@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Barcode Inventory",
+    "slug": "mobile-barcode-inventory",
+    "version": "0.1.0",
+    "scheme": "barcodeinventory",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "net.folderit.barcodeinventory"
+    },
+    "android": {
+      "package": "net.folderit.barcodeinventory",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0F1722"
+      }
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 112,
+          "resizeMode": "contain",
+          "backgroundColor": "#0F1722"
+        }
+      ],
+      "expo-sqlite",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Barcode Inventory uses the camera to read inventory barcodes. Camera images are not saved.",
+          "recordAudioAndroid": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

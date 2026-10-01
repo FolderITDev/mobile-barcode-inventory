@@ -80,7 +80,9 @@ export function utcOffset(iso: string, timeZone: string): string | null {
     parts.hour,
     parts.minute,
   );
-  const minutes = Math.round((wall - date.getTime()) / 60000);
+  // The wall-clock parts stop at minutes, so compare against the same precision.
+  const instant = Math.floor(date.getTime() / 60000) * 60000;
+  const minutes = Math.round((wall - instant) / 60000);
   if (minutes === 0) return 'GMT';
   const sign = minutes > 0 ? '+' : '-';
   const hours = Math.floor(Math.abs(minutes) / 60);

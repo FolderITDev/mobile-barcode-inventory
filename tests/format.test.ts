@@ -16,6 +16,13 @@ test('offsets are computed from the recorded zone, including half hours', () => 
   assert.equal(formatTimeZone(iso, 'Not/AZone'), 'Not/AZone');
 });
 
+test('seconds in the recorded moment do not skew the offset', () => {
+  const iso = '2026-10-01T14:12:40.512Z';
+  assert.equal(utcOffset(iso, 'America/Argentina/Cordoba'), 'GMT-3');
+  assert.equal(utcOffset(iso, 'Asia/Kolkata'), 'GMT+5:30');
+  assert.equal(utcOffset(iso, 'Pacific/Chatham'), 'GMT+13:45');
+});
+
 test('receipt times use the zone they were recorded in', () => {
   assert.equal(
     formatDateTime('2026-09-30T12:00:00Z', 'America/Chicago'),

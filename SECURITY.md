@@ -1,6 +1,6 @@
 # Security and privacy
 
-Barcode Inventory keeps all data on the device. It has no authentication, server, telemetry or cloud backup, so it is not designed to hold regulated or highly sensitive data. SQLite data relies on the operating system sandbox and is not additionally encrypted by the app.
+Barcode Inventory keeps all data on the device. It has no authentication, server, telemetry or cloud service of its own, so it is not designed to hold regulated or highly sensitive data. SQLite data relies on the operating system sandbox and is not additionally encrypted by the app. Operating system device backups (iCloud Backup, Android Auto Backup) can include this data.
 
 ## Reporting a vulnerability
 

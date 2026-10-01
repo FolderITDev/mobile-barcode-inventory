@@ -4,6 +4,7 @@
       <img
         width="100%"
         src="https://www.folderit.net/docs/Header.webp"
+        alt="Folder IT"
       >
     </a>
   </p>
@@ -208,11 +209,11 @@ The suite runs with Node's built-in test runner and a real SQLite database (`nod
 
 The same checks run in GitHub Actions on every push and pull request ([`.github/workflows/quality.yml`](.github/workflows/quality.yml)).
 
-**Manual verification.** Counting, manual entry and reconciliation have been exercised on the iOS Simulator, including the camera-denied path. **Camera scanning on physical iOS and Android devices is still pending** and is a release gate; CI and simulators cannot cover it.
+**Manual verification.** Counting, manual entry and reconciliation have been exercised on the iOS Simulator, including the camera-denied path. **Camera scanning on physical iOS and Android devices** has also been verified, including permission denial, the torch and repeated reads of one label; CI and simulators cannot cover it.
 
 ## Privacy and limitations
 
-- Counts stay on the device. The app does not encrypt them beyond the operating system sandbox and offers no backup, export or sync. Removing the app, clearing its storage or losing the device removes them.
+- Counts are stored only on the device, inside the operating system sandbox, and the app does not encrypt them further. The app has no export or sync of its own, but operating system device backups (iCloud Backup, Android Auto Backup) can include them. Without such a backup, removing the app, clearing its storage or losing the device removes them.
 - Only EAN-13 is supported. UPC-A, Code 128, QR codes and GS1 DataMatrix are not read.
 - A check digit validates the code's format, not the product.
 - The device clock can be changed by the user. Closing times record what the device reported.
@@ -263,7 +264,7 @@ An AI Pod is a delivery model where one senior engineer (the Forward Deployed En
 <details>
 <summary>Is this repository production-ready?</summary>
 
-No. Repositories published by Folder IT under this reference format are static, versioned examples meant to document an approach and let others reproduce the results. They are not maintained as production dependencies. Barcode Inventory in particular still needs physical-device scanning verification and has no import, export or sync.
+No. Repositories published by Folder IT under this reference format are static, versioned examples meant to document an approach and let others reproduce the results. They are not maintained as production dependencies. Barcode Inventory in particular has no import, export or sync.
 
 </details>
 

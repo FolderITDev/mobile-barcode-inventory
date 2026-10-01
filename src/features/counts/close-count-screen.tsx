@@ -62,11 +62,9 @@ export function CloseCountScreen() {
 
   const t = totals(record);
   const statuses = record.lines.map(lineStatus);
-  // Lines nobody counted are short by their full expected quantity.
   const countOf = (status: LineStatus) =>
-    statuses.filter(
-      (s) => s === status || (status === 'short' && s === 'uncounted'),
-    ).length;
+    statuses.filter((s) => s === status).length;
+  const uncounted = countOf('uncounted');
   const open = discrepancies(record);
 
   function close() {
@@ -136,6 +134,17 @@ export function CloseCountScreen() {
             </View>
           ))}
         </View>
+
+        {uncounted > 0 && (
+          <Block gap={space.xs}>
+            <Text variant="footnote" tone="muted">
+              {uncounted === 1
+                ? '1 line is not counted yet.'
+                : `${uncounted} lines are not counted yet.`}{' '}
+              Closing records them as 0 found.
+            </Text>
+          </Block>
+        )}
 
         <Section title={`Differences · ${open.length}`}>
           {open.length === 0 ? (
